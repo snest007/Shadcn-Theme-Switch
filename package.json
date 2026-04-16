@@ -11,6 +11,7 @@
     "generate": "node ./src/cli.js",
     "generate:theme-defaults": "node ./scripts/generate-theme-default-contract.mjs",
     "build:plugin": "node ./scripts/build-plugin.mjs",
+    "package:plugin": "npm run build:plugin && node ./scripts/package-plugin.mjs",
     "test": "node --test"
   },
   "engines": {

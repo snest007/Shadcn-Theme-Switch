@@ -54,6 +54,12 @@ Build the Figma plugin:
 npm run build:plugin
 ```
 
+Create the shareable plugin folder:
+
+```bash
+npm run package:plugin
+```
+
 ## Common Commands
 
 Generate collections from a preset:
@@ -87,6 +93,8 @@ node ./src/cli.js theme apply --project /path/to/shadcn-project --payload <base6
 3. Use `Export` to copy normalized CSS or a CLI command
 4. Use `Import` to analyze pasted CSS and sync it into Figma Variables
 
+To send the plugin to someone else, use `npm run package:plugin` and share `release/shadcn-theme-switch-plugin/`. That folder contains only the files needed to import the plugin into Figma.
+
 The plugin currently supports:
 
 - Color tokens
@@ -112,9 +120,9 @@ The plugin currently supports:
 - `blueprints/` — token blueprints used by generation and tests
 - `scripts/` — build and generation helpers
 - `test/` — Node test suite
-- `DESIGN.md` — design and visual reference notes
 
 ## Notes
 
 - `plugin/dist/` is intentionally not committed; build it locally before loading the plugin in Figma
 - `generated/` is an output directory for local generation runs and is not part of the committed source
+- `release/` is a generated delivery folder for sharing the plugin with other people
