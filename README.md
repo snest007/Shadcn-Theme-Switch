@@ -1,74 +1,120 @@
-# shadcn-preset-figma-generator
+<p align="center">
+  <img src="./plugin/icon.png" alt="Shadcn Theme Switch icon" width="96" height="96">
+</p>
 
-把 `shadcn` 主题和 Figma Variables 连接起来的一套工具。
+<h1 align="center">Shadcn Theme Switch</h1>
 
-这个仓库包含两部分：
+<p align="center">
+  A CLI + Figma plugin for syncing <code>shadcn</code> theme CSS, Figma Variables, and Token Studio-style collections.
+</p>
 
-- 一个本地 CLI，用来从 `shadcn` preset 或项目生成 Token Studio / Figma collections
-- 一个 Figma 插件，用来在 Figma 里做主题的 `Export / Import`
+<p align="center">
+  <strong>Node.js &gt;=24</strong> · <strong>CLI Generator</strong> · <strong>Figma Plugin</strong> · <strong>Theme Import / Export</strong>
+</p>
 
-## 目录说明
+## Overview
 
-- `src/`: 核心生成、主题 contract、CSS 解析、Figma 变量映射逻辑
-- `plugin/src/`: Figma 插件源码
-- `blueprints/`: 生成 collections 时使用的蓝图文件
-- `scripts/`: 构建插件和生成默认 contract 的脚本
-- `test/`: Node 内置测试
-- `DESIGN.md`: 视觉和设计参考说明
+This repository contains two connected tools:
 
-## 环境要求
+- A local CLI that generates Figma / Token Studio collections from a `shadcn` preset or an existing project
+- A Figma plugin that exports theme variables as CSS / CLI payloads and imports CSS back into Figma Variables
 
-- Node.js `>=24`
+The current plugin workflow focuses on:
 
-## 安装
+- `2. Theme`
+- `3. Mode`
+
+Importing CSS into Figma writes each import into a fresh timestamped Theme mode, so the existing `Default` mode is preserved.
+
+## What It Does
+
+- Generate collection files from a `shadcn` preset code or project path
+- Reconstruct normalized theme CSS from local Figma Variables
+- Produce a CLI payload you can apply back into a local project
+- Import `shadcn` theme CSS into Figma Variables with preflight conflict checks
+- Alias Theme variables to Tailwind-style variables whenever a safe match exists
+
+## Quick Start
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-## 常用命令
-
-运行测试：
+Run tests:
 
 ```bash
 npm test
 ```
 
-构建 Figma 插件：
+Build the Figma plugin:
 
 ```bash
 npm run build:plugin
 ```
 
-从 preset 生成 collections：
+## Common Commands
+
+Generate collections from a preset:
 
 ```bash
 npm run generate -- --preset bdvx03LE --out generated
 ```
 
-从现有项目生成 collections：
+Generate collections from an existing project:
 
 ```bash
 npm run generate -- --project /path/to/shadcn-project --out generated
 ```
 
-## Figma 插件
-
-先执行：
+Print theme CSS from a project:
 
 ```bash
-npm run build:plugin
+node ./src/cli.js theme css --project /path/to/shadcn-project
 ```
 
-然后在 Figma 里通过 `plugin/manifest.json` 加载插件。
+Apply a plugin-generated payload back into a project:
 
-插件当前主要处理：
+```bash
+node ./src/cli.js theme apply --project /path/to/shadcn-project --payload <base64url>
+```
 
-- `2. Theme`
-- `3. Mode`
+## Figma Plugin
 
-支持 `Export` 当前 Figma 主题为 CSS / CLI 命令，也支持把 CSS `Import` 回 Figma Variables。
+1. Run `npm run build:plugin`
+2. In Figma, load the plugin with `plugin/manifest.json`
+3. Use `Export` to copy normalized CSS or a CLI command
+4. Use `Import` to analyze pasted CSS and sync it into Figma Variables
 
-## GitHub 提交建议
+The plugin currently supports:
 
-这个仓库默认只提交源码和必要配置，不提交依赖、构建产物和本地临时文件。对应规则已经写在 `.gitignore` 里。
+- Color tokens
+- Font families
+- Radius
+- Shadow
+- Drop shadow
+- Inset shadow
+- Blur
+
+## Typical Workflow
+
+1. Generate a starting token set from a preset or project
+2. Load the plugin inside Figma
+3. Export the current variable state as CSS for review
+4. Import updated CSS back into Figma when the theme changes
+5. Apply the generated payload into a local project when needed
+
+## Repository Layout
+
+- `src/` — core generators, theme contract logic, CSS parsing, Figma variable mapping
+- `plugin/src/` — Figma plugin source
+- `blueprints/` — token blueprints used by generation and tests
+- `scripts/` — build and generation helpers
+- `test/` — Node test suite
+- `DESIGN.md` — design and visual reference notes
+
+## Notes
+
+- `plugin/dist/` is intentionally not committed; build it locally before loading the plugin in Figma
+- `generated/` is an output directory for local generation runs and is not part of the committed source
