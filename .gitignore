@@ -1,0 +1,14 @@
+node_modules/
+
+.DS_Store
+.tmp-*
+*.log
+cssbackup
+
+generated/
+modes/
+plugin/dist/
+
+main-BctBUwXr.js
+product-name-DH3nvCaM.js
+Shadcn Theme Switch Plugin Icon.png

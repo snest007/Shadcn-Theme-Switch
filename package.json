@@ -1,0 +1,22 @@
+{
+  "name": "shadcn-preset-figma-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Generate Figma/Token Studio collections from a shadcn preset or project.",
+  "bin": {
+    "shadcn-preset-figma": "./src/cli.js"
+  },
+  "scripts": {
+    "generate": "node ./src/cli.js",
+    "generate:theme-defaults": "node ./scripts/generate-theme-default-contract.mjs",
+    "build:plugin": "node ./scripts/build-plugin.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}

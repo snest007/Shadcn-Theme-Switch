@@ -1,0 +1,65 @@
+{
+  "Lucide Icons": {
+    "$type": "number",
+    "$value": 1,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:21003:91180",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "boolean",
+      "com.figma.isOverride": true
+    }
+  },
+  "Tabler Icons": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:21003:91181",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "boolean",
+      "com.figma.isOverride": true
+    }
+  },
+  "HugeIcons": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:21003:91182",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "boolean",
+      "com.figma.isOverride": true
+    }
+  },
+  "Phosphor Icons": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:21003:91183",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "boolean",
+      "com.figma.isOverride": true
+    }
+  },
+  "Remix Icon": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:21034:16930",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "boolean",
+      "com.figma.isOverride": true
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Default"
+  }
+}
